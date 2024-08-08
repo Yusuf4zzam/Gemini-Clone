@@ -1,0 +1,59 @@
+.sidebar {
+  background: var(--card-bg-color);
+  transition: 0.3s;
+  width: 70px;
+  animation: fadeLeft 0.5s linear;
+}
+
+.sidebar .icon-container {
+  position: relative;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar .icon-container:hover {
+  background: var(--header-bg-color);
+}
+
+.sidebar .icon-container::after {
+  content: attr(data-button-name);
+  position: absolute;
+  left: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  text-align: center;
+  font-size: 13px;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 3px 7px;
+  background: var(--card-bg-color);
+  display: none;
+  transition: 0.3s;
+}
+
+.sidebar .icon-container:hover::after {
+  display: block;
+}
+
+.sidebar.extended .icon-container::after {
+  width: fit-content;
+  text-wrap: nowrap;
+  left: 40px;
+  display: block !important;
+}
+
+.sidebar .recent {
+  animation: fadeOut 1s linear;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

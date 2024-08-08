@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: hsl(240, 100%, 95%);
+  --card-bg-color: #c8cfd7;
+  --header-bg-color: #c0c4db;
+  --header-color: #222222;
+  --text-color: #3d3d3d;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+}
+body::-webkit-scrollbar {
+  box-shadow: inset 0 0 10px var(--text-color);
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--header-color);
+  border-radius: 45px;
+}
+
+input:focus {
+  outline: none;
+}
+
+#root {
+  display: flex;
+  gap: 20px;
+  min-height: 100vh;
+}
+
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
