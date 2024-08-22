@@ -3,6 +3,7 @@ import "./main.css";
 import { assets } from "../../assets/assets";
 import { context } from "../../context/Context";
 import { useContext } from "react";
+import Navbar from "../Navbar";
 export default function Main() {
   const {
     input,
@@ -17,16 +18,7 @@ export default function Main() {
 
   return (
     <main>
-      <nav className="flex items-center justify-between py-4 px-4">
-        <div className="logo flex gap-1 items-center font-bold text-2xl">
-          <img src={logoImg} alt="Logo Image" />
-          <h1 className="tracking-widest">Gemini</h1>
-        </div>
-
-        <div className="user-avatar">
-          <img src={assets.user_icon} alt="User Avatar" />
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="content-wrapper relative md:w-[650px] lg:w-[900px] mx-auto mt-12 px-4 md:px-0">
         {!showResult && (
