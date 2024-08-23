@@ -1,7 +1,7 @@
 import logoImg from "../../../public/gemini_sparkle_v002_d4735304ff6292a690345.svg";
 import "./main.css";
 import { assets } from "../../assets/assets";
-import { context } from "../../context/Context";
+import { context, useApiContext } from "../../context/Context";
 import { useContext } from "react";
 import Navbar from "../Navbar";
 export default function Main() {
@@ -14,7 +14,7 @@ export default function Main() {
     result,
     onSent,
     immediateSent,
-  } = useContext(context);
+  } = useApiContext();
 
   return (
     <main>

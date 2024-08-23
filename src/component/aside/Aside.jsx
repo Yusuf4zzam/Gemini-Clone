@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import "./aside.css";
 import { assets } from "../../assets/assets.js";
-import { context } from "../../context/Context.jsx";
+import { useApiContext } from "../../context/Context.jsx";
 
 export default function Aside() {
-  const { prevPrompts, newChat, immediateSent } = useContext(context);
+  const { prevPrompts, newChat, immediateSent } = useApiContext();
   const [extended, setExtended] = useState(false);
 
   const handleToggle = () => setExtended((prev) => !prev);
