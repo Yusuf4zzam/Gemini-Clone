@@ -1,25 +1,18 @@
 import logoImg from "../../../public/gemini_sparkle_v002_d4735304ff6292a690345.svg";
 import "./main.css";
 import { assets } from "../../assets/assets";
-import { context } from "../../context/Context";
-import { useContext } from "react";
+import { useApiContext } from "../../context/Context";
 import Navbar from "../Navbar";
+import Spinner from "../common/Spinner";
+import { Card } from "../common/Card";
+import Footer from "../Footer";
 export default function Main() {
-  const {
-    input,
-    setInput,
-    prevPrompts,
-    loading,
-    showResult,
-    result,
-    onSent,
-    immediateSent,
-  } = useContext(context);
+  const { prevPrompts, loading, showResult, result, immediateSent } =
+    useApiContext();
 
   return (
     <main>
       <Navbar />
-
       <div className="content-wrapper relative md:w-[650px] lg:w-[900px] mx-auto mt-12 px-4 md:px-0">
         {!showResult && (
           <div className="heading-content mb-20">
@@ -32,7 +25,7 @@ export default function Main() {
           </div>
         )}
 
-        {loading && <div className="card-loader card-loader--tabs"></div>}
+        {loading && <Spinner />}
 
         {showResult && (
           <div className="result-container">
@@ -51,88 +44,36 @@ export default function Main() {
 
         {!showResult && (
           <div className="card-container flex flex-wrap sm:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-            <div
-              className="card rounded sm:h-[150px] sm:py-6 py-2 px-4 sm:px-6 relative cursor-pointer"
+            <Card
               onClick={() => immediateSent("Give Me A Food Recipes")}
-            >
-              <h4 className="font-bold tracking-widest">Food</h4>
-              <div className="img-box w-[30px] hidden sm:block absolute right-2 bottom-2">
-                <img src={assets.bulb_icon} alt="Bulb Icon" />
-              </div>
-            </div>
-            <div
-              className="card rounded sm:h-[150px] sm:py-6 py-2 px-4 sm:px-6 relative cursor-pointer"
+              image={assets.bulb_icon}
+              imageAlt="Bulb Icon"
+              title="Food"
+            />
+            <Card
               onClick={() => immediateSent("What Is The Weather Today?")}
-            >
-              <h4 className="font-bold tracking-widest">Weather</h4>
-              <div className="img-box w-[30px] hidden sm:block absolute right-2 bottom-2">
-                <img src={assets.compass_icon} alt="Compass Icon" />
-              </div>
-            </div>
-            <div
-              className="card rounded sm:h-[150px] sm:py-6 py-2 px-4 sm:px-6 relative cursor-pointer"
+              image={assets.compass_icon}
+              imageAlt="Compass Icon"
+              title="Weather"
+            />
+            <Card
               onClick={() => immediateSent("What Is Coding and how can i code")}
-            >
-              <h4 className="font-bold tracking-widest">Code</h4>
-              <div className="img-box w-[30px] hidden sm:block absolute right-2 bottom-2">
-                <img src={assets.code_icon} alt="Bulb Icon" />
-              </div>
-            </div>
-            <div
-              className="card rounded sm:h-[150px] sm:py-6 py-2 px-4 sm:px-6 relative cursor-pointer"
-              onClick={() => {
-                immediateSent("What Is The Most Rich Countries In The World?");
-              }}
-            >
-              <h4 className="font-bold tracking-widest">Countries</h4>
-              <div className="img-box w-[30px] hidden sm:block absolute right-2 bottom-2">
-                <img src={assets.gallery_icon} alt="Compass Icon" />
-              </div>
-            </div>
+              image={assets.code_icon}
+              imageAlt="Bulb Icon"
+              title="Code"
+            />
+            <Card
+              onClick={() =>
+                immediateSent("What Is The Most Rich Countries In The World?")
+              }
+              image={assets.gallery_icon}
+              imageAlt="Compass Icon"
+              title="Countries"
+            />
           </div>
         )}
 
-        <footer className="my-6">
-          <div className="search-container relative mb-6">
-            <input
-              className="w-full py-6 px-3 mb-3 sm:mb-0 text-sm font-bold tracking-wider"
-              type="text"
-              placeholder="Pleace Enter Your Question Here"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-
-            <div className="img-icon-box flex justify-end gap-3 sm:absolute top-6 right-8">
-              <img
-                className="w-[25px] cursor-pointer"
-                src={assets.gallery_icon}
-                alt="Image Icon"
-              />
-              <img
-                className="w-[25px] cursor-pointer"
-                src={assets.mic_icon}
-                alt="Image Icon"
-              />
-              <img
-                className="w-[25px] cursor-pointer"
-                src={assets.send_icon}
-                alt="Image Icon"
-                onClick={() => (input.trim() !== "" ? onSent(input) : null)}
-              />
-            </div>
-          </div>
-
-          <p className="text-center text-sm">
-            Gemini may display inaccurate information, including about
-            individuals, so we recommend that you verify its responses.
-            <a
-              className="text-blue-600 ml-1"
-              href="https://support.google.com/gemini?p=privacy_notice"
-            >
-              Your Privacy on Gemini Apps
-            </a>
-          </p>
-        </footer>
+        <Footer />
       </div>
     </main>
   );

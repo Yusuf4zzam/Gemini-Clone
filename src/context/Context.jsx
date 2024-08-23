@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import runChat from "../config/gemini";
 
 export const context = createContext();
@@ -76,3 +76,11 @@ const ContextProvider = ({ children }) => {
 };
 
 export default ContextProvider;
+
+export const useApiContext = () => {
+  const ctx = useContext(context);
+  if (!ctx) {
+    throw new Error("useApiContext must be used within a ContextProvider");
+  }
+  return ctx;
+};
