@@ -1,4 +1,4 @@
-import logoImg from "../../../public/gemini_sparkle_v002_d4735304ff6292a690345.svg";
+import logoImg from "/gemini_sparkle_v002_d4735304ff6292a690345.svg";
 import "./main.css";
 import { assets } from "../../assets/assets";
 import { context } from "../../context/Context";
